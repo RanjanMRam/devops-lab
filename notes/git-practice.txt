@@ -1,1 +1,6 @@
 line 1: changed on branch
+<<<<<<< HEAD
+=======
+line 2: from rebase branch
+line 3: hotfix
+>>>>>>> bb93987 (Hotfix line 3)

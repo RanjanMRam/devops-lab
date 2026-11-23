@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: sec-lab
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress"]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-approved
+  namespace: sec-lab
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              access: "true"
+      ports:
+        - protocol: TCP
+          port: 80
